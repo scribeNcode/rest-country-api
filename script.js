@@ -9,7 +9,7 @@ fetch('/data.json')
 })
 .then(data =>{
     const countries = data
-       document.querySelector('.wrapper').innerHTML = countries.map(country =>
+       document.querySelector('.all-countries-wrapper').innerHTML = countries.map(country =>
         `        <article>
             <img src= ${country.flags.png} alt="" srcset="">
             <p>Population: ${country.population}</p>
