@@ -40,5 +40,48 @@ fetch("/data.json")
         )
         .join("");
     }
+
+    /////////////////////// Logic for filter function/////////////////////
+    const filterTag = document.querySelector("#region-Tag");
+
+    //   add eventListener
+    filterTag.addEventListener("change", (e) => {
+      let selectedRegion = e.target.value;
+      //   logic to get all africa countries
+
+      if (selectedRegion === "") {
+        renderCountries(countries);
+      } else if (selectedRegion === "Africa") {
+        const allAfricanCountries = countries.filter((africaCountry) =>
+          africaCountry.region.includes("Africa")
+        );
+        renderCountries(allAfricanCountries);
+      } else if (selectedRegion === "Americas") {
+        // logic to get all america countries
+        const allAmericaCountries = countries.filter((americaCountry) =>
+          americaCountry.region.includes("Americas")
+        );
+        renderCountries(allAmericaCountries);
+      } else if (selectedRegion === "Asia") {
+        // logic to get all america countries
+        const allAsiaCountries = countries.filter((asiaCountry) =>
+          asiaCountry.region.includes("Asia")
+        );
+
+        renderCountries(allAsiaCountries);
+      } else if (selectedRegion === "Europe") {
+        // logic to get all european countries
+        const allEuropeanCountries = countries.filter((europeanCountry) =>
+          europeanCountry.region.includes("Europe")
+        );
+        renderCountries(allEuropeanCountries);
+      } else if (selectedRegion === "Oceania") {
+        // logic to get all asia countries
+        const allOceaniaCountries = countries.filter((oceaniaCountry) =>
+          oceaniaCountry.region.includes("Oceania")
+        );
+        renderCountries(allOceaniaCountries);
+      }
+    });
   })
   .catch((error) => console.error("error fetching data", error));
