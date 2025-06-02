@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="country-details-wrapper"></div>
+    <script>
+        // read the alphacode from the URL
+        const params = new URLSearchParams(window.location.search)
+        const code = params.get('code')
+        // Fetch countries and find countries with right code
+        fetch('data.json')
+        .then((res)=>res.json())
+        .then((data)=>{
+            const country = data.find((c)=>c.alpha3Code === code)
+        
+        if(country){
+            document.querySelector('.country-details-wrapper').innerHTML = 
+            `
+            <img src=${country.flags.png} alt="" srcset="">
+            <p>Native Name:${country.nativeName}<p/>
+            <p>Population:${country.population}<p/>
+            <p>Region:${country.region}<p/>
+            <p>Sub Region:${country.subregion}<p/>
+            <p>Capital${country.capital}<p/>
+            `
+        }else{
+            document.querySelector('.country-details-wrapper').textContent = "Country not found"
+        }
+        })
+
+        
+    </script>
+</body>
+</html>
