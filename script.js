@@ -31,7 +31,9 @@ fetch("/data.json")
         .map(
           (country) =>
             `        <article>
+          <a href="country.html?code=${country.alpha3Code}">
             <img src= ${country.flags.png} alt="" srcset="">
+         </a>
             <p>Population: ${country.population}</p>
             <p>Region:${country.region}</p>
             <p>Capital:${country.capital}</p>
